@@ -1,0 +1,11 @@
+{
+  "name": "boilerplate-crm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rafapignataro/boilerplate-crm.git",
+  "author": "<rafael.pignataro@singu.com.br>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
