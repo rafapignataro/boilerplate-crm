@@ -15,23 +15,23 @@ class App {
     this.routes();
   }
 
-  private middlewares () {
+  private middlewares() {
     this.express.use(express.json());
-    this.express.use(cors())
+    this.express.use(cors());
   }
 
-  private async database () {
+  private async database() {
     try {
-      const connection = await createConnection();
-      console.info('Connected to DB')
+      await createConnection();
+      console.info('Connected to DB');
     } catch (err) {
-      console.error('DB ERROR', err)
+      console.error('DB ERROR', err);
     }
   }
 
-  private routes () {
+  private routes() {
     this.express.use(routes);
   }
 }
 
-export default new App().express
+export default new App().express;
