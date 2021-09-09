@@ -7,7 +7,6 @@ import AuthController from './controllers/authController';
 
 const routes = Router();
 
-
 // Users
 routes.get('/users', authMiddleware, UserController.index);
 routes.post('/users', authMiddleware,  UserController.create);

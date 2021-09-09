@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "target": "ES2017",
     "module": "commonjs",
-    "target": "ES2020",
-    "lib": ["ES2020"],
+    "lib": ["es6"],
+    "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
@@ -11,13 +12,14 @@
     "removeComments": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "outDir": "dist",
-    "baseUrl": "src",
-    "paths": {
-      "*": [
-        "node_modules/*"
-      ]
-    },
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    "baseUrl": ".",
   },
   "extends": "@tsconfig/node14/tsconfig.json",
   "include": ["./src/**/*"],
