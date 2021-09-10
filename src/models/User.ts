@@ -4,21 +4,22 @@ import {
 import bcrypt from 'bcryptjs';
 
 @Entity('users')
-class User {
+export default class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('varchar')
+  @Column()
   email: string;
 
-  @Column('varchar')
+  @Column()
   password: string;
+
+  @Column('varchar', { default: 'default' })
+  role: string;
 
   @BeforeInsert()
   @BeforeUpdate()
-  hashPassword() {
+  hashPassword(): void {
     this.password = bcrypt.hashSync(this.password, 8);
   }
 }
-
-export default User;

@@ -6,11 +6,21 @@ import User from '../models/User';
 class UserController {
   public async index(req: Request, res: Response): Promise<Response> {
     try {
+      const { id } = req.params;
+
       const repository = getRepository(User);
+
+      if (id) {
+        const user = await repository.findOne({ where: { id } });
+
+        if (!user) throw new Error('There is no user with this id.');
+
+        return res.status(200).json(user);
+      }
 
       const data = await repository.find();
 
-      return res.json(data);
+      return res.status(200).json(data);
     } catch (error) {
       return res.status(500).json(error);
     }
@@ -18,7 +28,7 @@ class UserController {
 
   public async create(req: Request, res: Response): Promise<Response> {
     try {
-      const { email, password } = req.body;
+      const { email, password, role } = req.body;
 
       const repository = getRepository(User);
 
@@ -28,7 +38,7 @@ class UserController {
         return res.status(409).json({ message: 'Email already taken!' });
       }
 
-      const user = repository.create({ email, password });
+      const user = repository.create({ email, password, role });
 
       await repository.save(user);
 

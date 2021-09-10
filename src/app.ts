@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { createConnection } from 'typeorm';
+import dotenv from 'dotenv';
 
 import routes from './routes';
 
@@ -16,6 +17,7 @@ class App {
   }
 
   private middlewares() {
+    dotenv.config();
     this.express.use(express.json());
     this.express.use(cors());
   }
